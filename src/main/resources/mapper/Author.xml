@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main.java.dao.AuthorDAO">
+
+	<select id="queryAuthorByID" parameterType="int" resultType="Author">
+		SELECT
+		id,name,description,status,is_display,update_time,update_user FROM author
+		where
+		id=#{id}
+	</select>
+
+	<select id="queryAllAuthors" resultType="Author">
+		SELECT
+		id,name,description,status,is_display,update_time,update_user FROM author
+		limit #{offset},#{limit}
+	</select>
+	
+	<insert id="addOneAuthor">
+		INSERT ignore INTO author
+		(name,description,status,is_display,update_user)
+		VALUES
+		(#{name},#{description},#{status},#{isDisplay},#{updateUser})
+	</insert>
+
+	<update id="updateOneAuthor">
+		UPDATE author SET
+		name = #{name,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		is_display=#{isDisplay,jdbcType=INTEGER}
+		WHERE
+		id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

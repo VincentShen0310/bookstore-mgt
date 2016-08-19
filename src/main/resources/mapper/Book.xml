@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main.java.dao.BookDAO">
+
+	<select id="queryBookByID" parameterType="int" resultType="Book">
+		SELECT
+		id,name,description,status,is_display,author_id,update_time,update_user FROM book
+		where
+		id=#{id}
+	</select>
+
+	<select id="queryAllAuthors" resultType="Book">
+		SELECT
+		id,name,description,status,is_display,author_id,update_time,update_user FROM book
+	</select>
+	
+	<insert id="addOneBook">
+		INSERT ignore INTO author
+		(id,name,description,status,is_display,author_id)
+		VALUES
+		(#{name},#{description},#{status},#{isDisplay},#{authorId})
+	</insert>
+
+	<update id="updateOneBook">
+		UPDATE author SET
+		name = #{name,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		is_display=#{isDisplay,jdbcType=INTEGER}
+		author_id=#{authorId,jdbcType=INTEGER}
+		WHERE
+		id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
