@@ -77,32 +77,33 @@
     </br>
 
     <div class="input-group">
-      <span class="input-group-addon" id="name">描述:</span>
+      <span class="input-group-addon" id="description">描述:</span>
       <input  type="text" class="form-control" name="description" value="${authordetail.description}">
     </div>
   </br>
 
     <div class="input-group">
-      <span class="input-group-addon" id="name">状态:</span>
+      <span class="input-group-addon" id="status">状态:</span>
       <div class="switch">
         <c:if test="${authordetail.status == 1}">
-          <input type="checkbox" id="status" name="status" value="1" checked/>
+          <input type="checkbox" name="status" value="1" checked/>
         </c:if>
-        <c:if test="${authordetail.status != 1}">
-          <input type="checkbox" id="status"  name="status" value="0" />
-        </c:if>
+         <c:if test="${authordetail.status != 1}"> 
+           <input type="checkbox" name="status" value="1"/> 
+         </c:if> 
+
       </div>
     </div>
     </br>
 
     <div class="input-group">
-      <span class="input-group-addon" id="name">显示:</span>
+      <span class="input-group-addon" id="isDisplay">显示:</span>
       <div class="switch">
         <c:if test="${authordetail.isDisplay == 1}">
           <input type="checkbox" name="isDisplay" value="1" checked/>
         </c:if>
         <c:if test="${authordetail.isDisplay != 1}">
-          <input type="checkbox" name="isDisplay" value="0" />
+          <input type="checkbox" name="isDisplay" value="1" />
         </c:if>
       </div>
     </div>
@@ -134,8 +135,8 @@
 <script src="${ctx}/resources/js/common/fileinput.min.js" type="text/javascript"></script>
 <script src="${ctx}/resources/js/common/fileinput_locale_zh.js" type="text/javascript"></script>
 <script type="text/javascript">
-    $("[name='status']").bootstrapSwitch(),
-    $("[name='isDisplay']").bootstrapSwitch()
+    $("[name='status']").bootstrapSwitch();
+    $("[name='isDisplay']").bootstrapSwitch();
 	$("#inputFile").fileinput({
 		showUpload : false, //是否显示上传按钮
 		showPreview: true,//是否预览图片	

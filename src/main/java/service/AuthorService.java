@@ -16,4 +16,7 @@ public interface AuthorService {
 	void updateOneAuthor(int id,String name, String description, int status,
 			int isDisplay);
 	
+	List<Author> queryAuthorsByCondition(String name, String description, int status,
+			int isDisplay);
+	
 }

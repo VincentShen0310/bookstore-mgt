@@ -34,4 +34,23 @@
 		WHERE
 		id = #{id,jdbcType=INTEGER}
 	</update>
+
+	<select id="queryAuthorsByCondition" resultType="Author">
+		SELECT
+		id,name,description,status,is_display,update_time,update_user FROM author
+		where 1=1
+		<if test="name != null and name !='' ">
+			AND name like "%"#{name}"%"
+		</if>
+		<if test="description != null and description !='' ">
+			AND description like "%"#{description}"%"
+		</if>
+		<if test="status != null and status !='' ">
+			AND status = #{status}
+		</if>
+		<if test="isDisplay != null and isDisplay !='' ">
+			AND is_display = #{isDisplay}
+		</if>
+	</select>
+	
 </mapper>

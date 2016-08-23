@@ -33,8 +33,9 @@ public class AuthorController {
 	private AuthorService authorService;
 	
 	@RequestMapping(value="/list")
-	public String list(Model model){
-		List<Author> list=authorService.queryAllAuthors();
+	public String list(Model model,Author author){
+		List<Author> list=authorService.queryAuthorsByCondition(author.getName(), author.getDescription(), author.getStatus(), author.getIsDisplay());
+		model.addAttribute("authorsearch", author);
 		model.addAttribute("list", list);
 		return "author/list";
 	}
@@ -58,16 +59,13 @@ public class AuthorController {
 	}
 	
 	@RequestMapping(value = "/add")
-	@ResponseBody
 	public String add(Author author) {
 		authorService.addOneAuthor(author.getName(), author.getDescription(),author.getStatus(),author.getIsDisplay(), 1);
 		return "redirect:/author/list";
 	}
 	
 	@RequestMapping(value = "/{id}/edit")
-	@ResponseBody
 	public String edit(Author author) throws IOException{
-		
 		authorService.updateOneAuthor(author.getId(), author.getName(), author.getDescription(),author.getStatus(), author.getIsDisplay());
 		return "redirect:/author/list";
 	}

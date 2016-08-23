@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 public class AuthorServiceImpl implements AuthorService{
 
 
+
+
 	@Autowired
 	private AuthorDAO authorDAO;
 	
@@ -32,5 +34,10 @@ public class AuthorServiceImpl implements AuthorService{
 	public void updateOneAuthor(int id, String name, String description,
 			int status, int isDisplay) {
 		authorDAO.updateOneAuthor(id, name, description, status, isDisplay);
+	}
+	
+	public List<Author> queryAuthorsByCondition(String name,
+			String description, int status, int isDisplay) {
+		return authorDAO.queryAuthorsByCondition(name, description, status, isDisplay);
 	}
 }

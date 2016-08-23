@@ -48,6 +48,39 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">BookStore</h1>
+				<form class="navbar-form" method="post">
+					<div class="input-group">
+						<span class="input-group-addon" id="name">姓名:</span>
+						<input	type="text" class="form-control" name="name" value="${authorsearch.name}">
+					</div>
+
+			
+					<div class="input-group">
+						<span class="input-group-addon" id="description">描述:</span> 
+						<input	type="text" class="form-control" name="description"	value="${authorsearch.description}">
+					</div>
+
+
+					<div class="input-group">
+						<span class="input-group-addon" id="status">状态:</span> 
+									<select class="form-control" name="status" >
+										<option value=0 <c:if test="${authorsearch.status==0}">selected</c:if>>--全部--</option>
+										<option value=1 <c:if test="${authorsearch.status==1}">selected</c:if>>有效</option>
+									</select>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-addon" id="isDisplay">显示:</span>
+								<select class="form-control" name="isDisplay" value="${authorsearch.status}">
+										<option value=0 <c:if test="${authorsearch.isDisplay==0}">selected</c:if>>--全部--</option>
+										<option value=1 <c:if test="${authorsearch.isDisplay==1}">selected</c:if>>显示</option>
+									</select>
+					</div>
+
+					
+          		<button type="submit" class="btn btn-success">查询</button>
+			  </form>
+
 
           <h2 class="sub-header">Author List</h2>
 
@@ -89,7 +122,7 @@
 					</c:if>
 					<td>${author.updateUser}</td>
 					<td><fmt:formatDate value="${author.updateTime}"	pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td><a class="btn btn-info" href="${author.id}/detail"	target="_blank" >Detail</a></td>
+				<td><a class="btn btn-info" href="${author.id}/detail"	>Detail</a></td>
 				<td><a class="btn btn-info" href="${author.id}/download">Download</a></td>
                 </tr>
             </c:forEach>

@@ -60,13 +60,13 @@
 					</br>
 			
 					<div class="input-group">
-						<span class="input-group-addon" id="name">描述:</span> 
+						<span class="input-group-addon" id="description">描述:</span> 
 						<input	type="text" class="form-control" name="description"	value="${authordetail.description}">
 					</div>
 					</br>
 					
 					<div class="input-group">
-						<span class="input-group-addon" id="name">状态:</span>
+						<span class="input-group-addon" id="status">状态:</span>
 						<div class="switch">
 								<input type="checkbox" id="status" name="status" value= "1" checked="checked" />
 						</div>
@@ -74,7 +74,7 @@
 					</br>
 					
 					<div class="input-group">
-						<span class="input-group-addon" id="name">显示:</span>
+						<span class="input-group-addon" id="isDisplay">显示:</span>
 						<div class="switch">
 							<input type="checkbox" id="isDisplay" name="isDisplay" value= "1" checked="checked" />
 						</div>
