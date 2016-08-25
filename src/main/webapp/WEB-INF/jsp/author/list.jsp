@@ -78,7 +78,7 @@
 					</div>
 
 					
-          		<button type="submit" class="btn btn-success">查询</button>
+          		<button type="submit" class="btn btn-primary">查询</button>
 			  </form>
 
 
@@ -122,13 +122,31 @@
 					</c:if>
 					<td>${author.updateUser}</td>
 					<td><fmt:formatDate value="${author.updateTime}"	pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				<td><a class="btn btn-info" href="${author.id}/detail"	>Detail</a></td>
+				<td><a class="btn btn-info" href="${author.id}/detail">Detail</a></td>
 				<td><a class="btn btn-info" href="${author.id}/download">Download</a></td>
                 </tr>
             </c:forEach>
                </tbody>
             </table>
-          </div>
+            
+					<div class="pull-right">
+						<nav aria-label="Page navigation">
+							<ul class="pagination">
+								<li><a href="#" aria-label="Previous"> <span
+										aria-hidden="true">&laquo;</span>
+								</a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">6</a></li>
+								<li><a href="#" aria-label="Next"> <span
+										aria-hidden="true">&raquo;</span>
+								</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
         </div>
       </div>
     </div>

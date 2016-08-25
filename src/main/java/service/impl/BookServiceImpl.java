@@ -25,14 +25,18 @@ public class BookServiceImpl implements BookService {
 
 	public void addOneBook(String name, String description, int status,
 			int isDisplay, int authorId) {
-		addOneBook(name, description, status, isDisplay, authorId);
+		bookDAO.addOneBook(name, description, status, isDisplay, authorId);
 
 	}
 
-	public void updateOneBook(String name, String description, int status,
-			int isDisplay, int authorId) {
-		updateOneBook(name, description, status, isDisplay, authorId);
-
+	public void updateOneBook(int id,String name, String description, int status,
+			int isDisplay,int authorId) {
+		bookDAO.updateOneBook(id,name, description, status, isDisplay,authorId);
 	}
 
+	public List<Book> queryBooksByCondition(String name, String description,
+			int status, int isDisplay,String authorName) {
+		return bookDAO.queryBooksByCondition(name, description, status, isDisplay,authorName);
+	}
+	
 }

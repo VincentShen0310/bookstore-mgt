@@ -5,6 +5,20 @@
 
 <mapper namespace="main.java.dao.BookDAO">
 
+	<resultMap type="Book" id="BookResult">
+		<id column="b_id" jdbcType="INTEGER" property="id" />
+		<result column="b_name" jdbcType="VARCHAR" property="name" />
+		<result column="b_description" jdbcType="VARCHAR" property="description" />
+		<result column="b_status" jdbcType="INTEGER" property="status" />
+		<result column="b_is_display" jdbcType="INTEGER" property="isDisplay" />
+		<result column="b_author_id" jdbcType="INTEGER" property="authorId" />
+		<result column="b_update_time" jdbcType="VARCHAR" property="updateTime" />
+		<result column="b_update_user" jdbcType="VARCHAR" property="updateUser" />
+		<collection property="author" resultMap="main.java.dao.AuthorDAO.AuthorResult"/>
+	</resultMap>
+
+
+
 	<select id="queryBookByID" parameterType="int" resultType="Book">
 		SELECT
 		id,name,description,status,is_display,author_id,update_time,update_user FROM book
@@ -12,26 +26,54 @@
 		id=#{id}
 	</select>
 
-	<select id="queryAllAuthors" resultType="Book">
+	<select id="queryAllBooks" resultType="Book" resultMap="BookResult">
 		SELECT
 		id,name,description,status,is_display,author_id,update_time,update_user FROM book
 	</select>
 	
 	<insert id="addOneBook">
-		INSERT ignore INTO author
-		(id,name,description,status,is_display,author_id)
+		INSERT ignore INTO book
+		(name,description,status,is_display,author_id)
 		VALUES
 		(#{name},#{description},#{status},#{isDisplay},#{authorId})
 	</insert>
 
 	<update id="updateOneBook">
-		UPDATE author SET
+		UPDATE book SET
 		name = #{name,jdbcType=VARCHAR},
 		description = #{description,jdbcType=VARCHAR},
 		status = #{status,jdbcType=INTEGER},
-		is_display=#{isDisplay,jdbcType=INTEGER}
+		is_display=#{isDisplay,jdbcType=INTEGER},
 		author_id=#{authorId,jdbcType=INTEGER}
 		WHERE
 		id = #{id,jdbcType=INTEGER}
 	</update>
+	
+	<select id="queryBooksByCondition" resultMap="BookResult">
+		SELECT
+		b.id b_id,b.name b_name,b.description b_description,
+		b.status b_status,b.is_display b_is_display,
+		b.author_id,b.update_time b_update_time,
+		b.update_user b_update_user,a.name
+		FROM book b
+		left join author a on b.author_id=a.id
+		where 1=1
+		<if test="name != null and name !='' ">
+			AND b.name like "%"#{name}"%"
+		</if>
+		<if test="description != null and description !='' ">
+			AND b.description like "%"#{description}"%"
+		</if>
+		<if test="status != null and status !='' ">
+			AND b.status = #{status}
+		</if>
+		<if test="isDisplay != null and isDisplay !='' ">
+			AND b.is_display = #{isDisplay}
+		</if>
+		<if test="authorName != null and authorName !='' ">
+			AND a.name like "%"#{authorName}"%"
+		</if>
+		
+	</select>
+	
 </mapper>

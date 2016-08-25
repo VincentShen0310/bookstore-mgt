@@ -14,6 +14,14 @@ public class Book {
 	private int authorId;
 	private Date updateTime;
 	private int updateUser;
+	private Author author;
+	
+ 	public Author getAuthor() {
+		return author;
+	}
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
 	public int getId() {
 		return id;
 	}
@@ -62,13 +70,13 @@ public class Book {
 	public void setUpdateUser(int updateUser) {
 		this.updateUser = updateUser;
 	}
-	
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", name=" + name + ", description="
 				+ description + ", status=" + status + ", isDisplay="
 				+ isDisplay + ", authorId=" + authorId + ", updateTime="
-				+ updateTime + ", updateUser=" + updateUser + "]";
+				+ updateTime + ", updateUser=" + updateUser + ", author="
+				+ author + "]";
 	}
-
+	
 }

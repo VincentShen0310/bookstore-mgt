@@ -81,7 +81,7 @@
 					</div>
 					</br>
 					
-          		<button type="submit" class="btn btn-success">保存</button>
+          		<button type="submit" class="btn btn-primary">保存</button>
           		<a type="button" class="btn btn-default" href="${ctx}/author/list">返回</a>
    
 			  </form>

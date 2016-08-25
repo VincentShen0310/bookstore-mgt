@@ -12,7 +12,10 @@ public interface BookService {
 	void addOneBook(String name, String description, int status, int isDisplay,
 			int authorId);
 
-	void updateOneBook(String name, String description, int status,
-			int isDisplay, int authorId);
+	void updateOneBook(int id,String name, String description, int status,
+			int isDisplay,int authorId);
 
+	List<Book> queryBooksByCondition(String name, String description, int status,
+			int isDisplay,String authorName);
+	
 }
