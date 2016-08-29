@@ -6,14 +6,7 @@
 <head>
 	<title>Author New</title>
 	<%@include file="../common/head.jsp"%>
-	<!-- Bootstrap core CSS -->
-	<link href="${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<link href="${ctx}/resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="${ctx}/resources/css/dashboard.css" rel="stylesheet">
-	<link href="${ctx}/resources/images/common/favicon.ico" rel="shortcut icon">
-  <link href="${ctx}/resources/css/bootstrap-switch.min.css" rel="stylesheet">
+
 </head>
 
 <body>

@@ -75,7 +75,6 @@ public class AuthorController {
 		return "author/upload";
 	}
 	
-	
 	@RequestMapping(value = "/upload")
 	@ResponseBody
 	public String upload(@RequestParam("upfile") MultipartFile file,HttpServletRequest request) throws IOException{

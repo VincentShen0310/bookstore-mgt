@@ -6,13 +6,7 @@
 <head>
 	<title>Author List</title>
 	<%@include file="../common/head.jsp"%>
-	<!-- Bootstrap core CSS -->
-	<link href="${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<link href="${ctx}/resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="${ctx}/resources/css/dashboard.css" rel="stylesheet">
-	<link href="${ctx}/resources/images/common/favicon.ico" rel="shortcut icon">
+
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -40,13 +34,15 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-1 sidebar">
           <ul class="nav nav-sidebar">
             <li ><a href="${ctx}/book/list">Book </a></li>
             <li class="active"><a href="${ctx}/author/list">Author<span class="sr-only">(current)</span></a></li>
           </ul>
+
+
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
           <h1 class="page-header">BookStore</h1>
 				<form class="navbar-form" method="post">
 					<div class="input-group">
