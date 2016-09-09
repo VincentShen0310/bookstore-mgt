@@ -36,15 +36,18 @@
       <div class="row">
         <div class="col-sm-3 col-md-1 sidebar">
           <ul class="nav nav-sidebar">
+          </li>
             <li ><a href="${ctx}/book/list">Book </a></li>
             <li class="active"><a href="${ctx}/author/list">Author<span class="sr-only">(current)</span></a></li>
           </ul>
-
-
         </div>
+
         <div class="col-sm-10 col-sm-offset-2 col-md-11 col-md-offset-1 main">
           <h1 class="page-header">BookStore</h1>
-				<form class="navbar-form" method="post">
+				<form class="navbar-form" id="navbar-form" method="post">
+				
+				<input type="hidden" name="currentPage" id="currentPage" value="${page.currentPage}"/>
+				
 					<div class="input-group">
 						<span class="input-group-addon" id="name">姓名:</span>
 						<input	type="text" class="form-control" name="name" value="${authorsearch.name}">
@@ -124,36 +127,12 @@
             </c:forEach>
                </tbody>
             </table>
-            
-					<div class="pull-right">
-						<nav aria-label="Page navigation">
-							<ul class="pagination">
-								<li><a href="#" aria-label="Previous"> <span
-										aria-hidden="true">&laquo;</span>
-								</a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">6</a></li>
-								<li><a href="#" aria-label="Next"> <span
-										aria-hidden="true">&raquo;</span>
-								</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
+					<%@include file="../common/pagination.jsp"%>					
+			</div>
         </div>
       </div>
     </div>
 
 </body>
-	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-	<script src="${ctx}/resources/js/common/jquery.min.js"></script>
-	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-	<script	src="${ctx}/resources/js/common/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="${ctx}/resources/js/common/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="${ctx}/resources/js/common/ie10-viewport-bug-workaround.js"></script>
+	<%@include file="../common/footer.jsp"%>
 </html>

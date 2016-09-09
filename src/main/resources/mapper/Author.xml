@@ -18,7 +18,7 @@
 	<select id="queryAuthorByID" parameterType="int" resultMap="AuthorResult">
 		SELECT
 		id,name,description,status,is_display,update_time,update_user FROM author
-		where
+		WHERE
 		id=#{id}
 	</select>
 
@@ -45,22 +45,31 @@
 		id = #{id,jdbcType=INTEGER}
 	</update>
 
-	<select id="queryAuthorsByCondition" resultMap="AuthorResult">
+	<select id="queryAuthorsByCondition" parameterType="java.util.Map" resultMap="AuthorResult">
 		SELECT
 		id,name,description,status,is_display,update_time,update_user FROM author
 		where 1=1
-		<if test="name != null and name !='' ">
-			AND name like "%"#{name}"%"
+		<if test="author.name != null and author.name !='' and !&quot;&quot;.equals(author.name.trim()) ">
+			AND name like "%"#{author.name}"%"
 		</if>
-		<if test="description != null and description !='' ">
-			AND description like "%"#{description}"%"
+		<if test="author.description != null and author.description !='' and !&quot;&quot;.equals(author.description.trim()) ">
+			AND description like "%"#{author.description}"%"
 		</if>
-		<if test="status != null and status !='' ">
-			AND status = #{status}
+		<if test="author.status != null and author.status !='' ">
+			AND status = #{author.status}
 		</if>
-		<if test="isDisplay != null and isDisplay !='' ">
-			AND is_display = #{isDisplay}
+		<if test="author.isDisplay != null and author.isDisplay !='' ">
+			AND is_display = #{author.isDisplay}
 		</if>
+		order by ID
 	</select>
+	
+
+<!-- 	<select id="queryAuthorsByCondition" parameterType="java.util.Map" resultMap="AuthorResult"> -->
+<!-- 		SELECT -->
+<!-- 		id,name,description,status,is_display,update_time,update_user FROM author -->
+<!-- 		where name =#{author.name} -->
+<!-- 	</select>	 -->
+
 	
 </mapper>

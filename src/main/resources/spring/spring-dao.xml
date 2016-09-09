@@ -45,6 +45,12 @@ http://mybatis.org/schema/mybatis-spring.xsd">
 		<property name="typeAliasesPackage" value="main.java.entity" />
 		<!--扫描mapper下的xml文件 -->
 		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+		
+		<property name="plugins">
+			<!-- 分页拦截器 --> 
+			<bean class="main.java.common.PageInterceptor"></bean>
+		</property>
+		
 	</bean>
 
 	<!-- 配置扫描DAO，动态实现DAO接口，并注入到Spring中 -->

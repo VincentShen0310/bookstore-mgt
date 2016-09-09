@@ -3,9 +3,11 @@ package main.java.web;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
+import main.java.common.Page;
 import main.java.entity.Author;
 import main.java.service.AuthorService;
 
@@ -33,13 +35,23 @@ public class AuthorController {
 	private AuthorService authorService;
 	
 	@RequestMapping(value="/list")
-	public String list(Model model,Author author){
-		List<Author> list=authorService.queryAuthorsByCondition(author.getName(), author.getDescription(), author.getStatus(), author.getIsDisplay());
+	public String list(Model model,Author author,Page page,HttpServletRequest request){
+		List<Author> list=authorService.queryAuthorsByCondition(author.getName(),author.getDescription(),author.getStatus(),author.getIsDisplay(), page);
+		String currentPage = request.getParameter("currentPage");
+		Pattern pattern = Pattern.compile("[0-9]{1,9}");
+		if(currentPage == null ||  !pattern.matcher(currentPage).matches()) {
+			page.setCurrentPage(1);
+		} else {
+			page.setCurrentPage(Integer.valueOf(currentPage));
+		}
+		
 		model.addAttribute("authorsearch", author);
 		model.addAttribute("list", list);
+		model.addAttribute("page", page);
 		return "author/list";
 	}
 	
+
 	@RequestMapping(value="/{id}/detail",method=RequestMethod.GET)
 	public String detail(@PathVariable("id") int id, Model model){
 		if (id==0) {

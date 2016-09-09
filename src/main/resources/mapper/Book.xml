@@ -49,7 +49,7 @@
 		id = #{id,jdbcType=INTEGER}
 	</update>
 	
-	<select id="queryBooksByCondition" resultMap="BookResult">
+	<select id="queryBooksByCondition" parameterType="java.util.Map" resultMap="BookResult">
 		SELECT
 		b.id b_id,b.name b_name,b.description b_description,
 		b.status b_status,b.is_display b_is_display,
@@ -58,22 +58,22 @@
 		FROM book b
 		left join author a on b.author_id=a.id
 		where 1=1
-		<if test="name != null and name !='' ">
-			AND b.name like "%"#{name}"%"
+		<if test="book.name != null and book.name !='' and !&quot;&quot;.equals(book.name.trim()) ">
+			AND b.name like "%"#{book.name}"%"
 		</if>
-		<if test="description != null and description !='' ">
-			AND b.description like "%"#{description}"%"
+		<if test="book.description != null and book.description !='' and !&quot;&quot;.equals(book.description.trim()) ">
+			AND b.description like "%"#{book.description}"%"
 		</if>
-		<if test="status != null and status !='' ">
-			AND b.status = #{status}
+		<if test="book.status != null and book.status !='' ">
+			AND b.status = #{book.status}
 		</if>
-		<if test="isDisplay != null and isDisplay !='' ">
-			AND b.is_display = #{isDisplay}
+		<if test="book.isDisplay != null and book.isDisplay !='' ">
+			AND b.is_display = #{book.isDisplay}
 		</if>
-		<if test="authorName != null and authorName !='' ">
+		<if test="authorName != null and authorName !='' and !&quot;&quot;.equals(authorName.trim()) ">
 			AND a.name like "%"#{authorName}"%"
 		</if>
-		
+		order by b.id
 	</select>
 	
 </mapper>

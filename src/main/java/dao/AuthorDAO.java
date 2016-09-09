@@ -1,6 +1,7 @@
 package main.java.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import main.java.entity.Author;
 
@@ -25,9 +26,12 @@ public interface AuthorDAO {
 	void updateOneAuthor(@Param("id") int id, @Param("name") String name,
 			@Param("description") String description,
 			@Param("status") int status, @Param("isDisplay") int isDisplay);
-	
+
 	//根据条件查询信息
-	List<Author> queryAuthorsByCondition(@Param("name") String name,
-			@Param("description") String description,
-			@Param("status") int status, @Param("isDisplay") int isDisplay);
+	List<Author> queryAuthorsByCondition(Map<String,Object> map);
+	
+//	List<Author> queryAuthorsByCondition(@Param("name") String name,
+//	@Param("description") String description,
+//	@Param("status") int status, @Param("isDisplay") int isDisplay);
+	
 }

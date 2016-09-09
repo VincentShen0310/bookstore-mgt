@@ -1,9 +1,11 @@
 package main.java.web;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
+import main.java.common.Page;
 import main.java.entity.Author;
 import main.java.entity.Book;
 import main.java.service.AuthorService;
@@ -26,25 +28,35 @@ public class BookController {
 	private AuthorService authorService;
 	
 	@RequestMapping(value="/list")
-	public String list(Model model,Book book,HttpServletRequest request){
+	public String list(Model model,Book book,HttpServletRequest request,Page page){
 		
-		List<Book> list=bookService.queryBooksByCondition(book.getName(), book.getDescription(), book.getStatus(), book.getIsDisplay(), request.getParameter("authorName"));
+		List<Book> list=bookService.queryBooksByCondition(book.getName(), book.getDescription(), book.getStatus(), book.getIsDisplay(), request.getParameter("authorName"), page);
+		
+		String currentPage = request.getParameter("currentPage");
+		Pattern pattern = Pattern.compile("[0-9]{1,9}");
+		if(currentPage == null ||  !pattern.matcher(currentPage).matches()) {
+			page.setCurrentPage(1);
+		} else {
+			page.setCurrentPage(Integer.valueOf(currentPage));
+		}
+		
 		model.addAttribute("list", list);
 		model.addAttribute("booksearch", book);
 		request.setAttribute("authorName", request.getParameter("authorName"));
+		model.addAttribute("page", page);
 		return "book/list";
 	}
 		
 	@RequestMapping(value="/{id}/detail",method=RequestMethod.GET)
 	public String detail(Model model,@PathVariable("id") int id){
 		if (id==0) {
-			return "forward:/book/list";
+			return "redirect:/book/list";
 		}
 		Book book=bookService.queryBookByID(id);
 		if (book==null) {
-			return "forward:/book/list";
+			return "redirect:/book/list";
 		}
-		List<Author> alist=authorService.queryAllAuthors();
+		List<Author> alist=authorService.queryAllAuthors(0,100);
 		model.addAttribute("bookdetail", book);
 		model.addAttribute("authorlist", alist);
 		return "book/detail";
@@ -52,7 +64,7 @@ public class BookController {
 	
 	@RequestMapping(value="/addinit")
 	public String addinit(Model model){
-		List<Author> alist=authorService.queryAllAuthors();
+		List<Author> alist=authorService.queryAllAuthors(0,100);
 		model.addAttribute("authorlist", alist);
 		return "book/add";
 	}

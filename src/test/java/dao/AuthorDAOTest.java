@@ -1,7 +1,10 @@
 package test.java.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import main.java.common.Page;
 import main.java.dao.AuthorDAO;
 import main.java.entity.Author;
 
@@ -13,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring/spring-dao.xml" })
-public class AuthorDAOTestNew {
+public class AuthorDAOTest {
 	@Autowired
 	private AuthorDAO authorDAO;
 	
@@ -52,5 +55,24 @@ public class AuthorDAOTestNew {
 		int status=1;
 		int isDisplay=1;
 		authorDAO.updateOneAuthor(id, name, description, status, isDisplay);
+	}
+	
+	@Test
+	public void testQueryAuthorsByCondition(){
+		Map<String, Object> map=new HashMap<String, Object>();
+		Page page=new Page();
+		page.setCurrentPage(1);
+		Author author=new Author();
+		author.setName("奎恩");
+		map.put("author", author);
+		map.put("page", page);
+		System.out.println("THE MAP INFO IS "+map);
+		System.out.println("THE AUTHOR INFO IS "+author.getName());
+		System.out.println("THE PAGE INFO IS "+page.getCurrentPage());
+		List<Author> list=authorDAO.queryAuthorsByCondition(map);
+		for (Author author2 : list) {
+			System.out.println("THE AUTHOR IS "+author2.getName()+", and THE AUTHOR D IS "+author2.getDescription());
+		}
+		System.out.println("THE SEARCH INFO IS "+list);
 	}
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main.java.dao.RoleDAO">
+
+	<resultMap type="Role" id="RoleResult">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+	</resultMap>
+
+	<select id="queryRoleByID" resultType="Role">
+		SELECT
+		id,name,description,status FROM role
+		where
+		id=#{id}
+	</select>
+
+	<select id="queryAllRoles" resultType="Role" resultMap="RoleResult">
+		SELECT
+		id,name,description,status FROM role
+		<where>
+		<if test="name != null and name !='' ">
+			name like "%"#{name}"%"
+		</if>
+		<if test="description != null and description !='' ">
+			description like "%"#{description}"%"
+		</if>
+		<if test="status != null and status !='' ">
+			status = #{status}
+		</if>
+		</where>
+	</select>
+	
+	<insert id="addRole">
+		INSERT ignore INTO role
+		(name,description,status)
+		VALUES
+		(#{name},#{description},#{status})
+	</insert>
+
+	<update id="updateRole">
+		UPDATE role SET
+		name = #{name,jdbcType=VARCHAR},
+		description = #{description,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		WHERE
+		id = #{id,jdbcType=INTEGER}
+	</update>
+	
+</mapper>

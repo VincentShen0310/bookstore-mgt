@@ -43,5 +43,6 @@ http://mybatis.org/schema/mybatis-spring.xsd">
 
 	<!-- 扫描web相关的bean -->
 	<context:component-scan base-package="main.java.web" />
+
 </beans>
 

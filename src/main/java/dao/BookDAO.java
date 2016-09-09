@@ -1,8 +1,10 @@
 package main.java.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+
 import main.java.entity.Book;
 
 public interface BookDAO {
@@ -24,7 +26,9 @@ public interface BookDAO {
 			@Param("status") int status, @Param("isDisplay") int isDisplay,@Param("authorId") int authorId);
 	
 	//根据条件查询信息
-	List<Book> queryBooksByCondition(@Param("name") String name,
-			@Param("description") String description,
-			@Param("status") int status, @Param("isDisplay") int isDisplay, @Param("authorName") String authorName);
+//	List<Book> queryBooksByCondition(@Param("name") String name,
+//			@Param("description") String description,
+//			@Param("status") int status, @Param("isDisplay") int isDisplay, @Param("authorName") String authorName);
+	List<Book> queryBooksByCondition(Map<String, Object> map);
+	
 }
