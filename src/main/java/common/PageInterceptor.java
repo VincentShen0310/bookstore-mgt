@@ -26,7 +26,6 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 @Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class})})
 public class PageInterceptor implements Interceptor{
 
-	@Override
 	public Object intercept(Invocation invocation) throws Throwable {
 		StatementHandler statementHandler=(StatementHandler) invocation.getTarget();
 		MetaObject metaObject = MetaObject.forObject(statementHandler, SystemMetaObject.DEFAULT_OBJECT_FACTORY, SystemMetaObject.DEFAULT_OBJECT_WRAPPER_FACTORY,new DefaultReflectorFactory());
@@ -64,12 +63,10 @@ public class PageInterceptor implements Interceptor{
 		return invocation.proceed();
 	}
 
-	@Override
 	public Object plugin(Object target) {
 		return Plugin.wrap(target, this);
 	}
 
-	@Override
 	public void setProperties(Properties properties) {
 		
 	}
