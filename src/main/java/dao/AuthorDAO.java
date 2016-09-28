@@ -1,9 +1,9 @@
-package main.java.dao;
+package dao;
 
 import java.util.List;
 import java.util.Map;
 
-import main.java.entity.Author;
+import entity.Author;
 
 import org.apache.ibatis.annotations.Param;
 

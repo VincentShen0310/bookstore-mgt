@@ -1,8 +1,8 @@
-package main.java.dao;
+package dao;
 
 import java.util.List;
 
-import main.java.entity.User;
+import entity.User;
 
 import org.apache.ibatis.annotations.Param;
 

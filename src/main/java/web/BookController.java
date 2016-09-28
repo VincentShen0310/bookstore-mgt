@@ -1,15 +1,15 @@
-package main.java.web;
+package web;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import main.java.common.Page;
-import main.java.entity.Author;
-import main.java.entity.Book;
-import main.java.service.AuthorService;
-import main.java.service.BookService;
+import common.Page;
+import entity.Author;
+import entity.Book;
+import service.AuthorService;
+import service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

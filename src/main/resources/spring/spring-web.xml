@@ -42,7 +42,7 @@ http://mybatis.org/schema/mybatis-spring.xsd">
    	</bean> 
 
 	<!-- 扫描web相关的bean -->
-	<context:component-scan base-package="main.java.web" />
+	<context:component-scan base-package="web" />
 
 </beans>
 

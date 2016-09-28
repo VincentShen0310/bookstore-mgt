@@ -1,9 +1,9 @@
-package main.java.service;
+package service;
 
 import java.util.List;
 
-import main.java.common.Page;
-import main.java.entity.Book;
+import common.Page;
+import entity.Book;
 
 public interface BookService {
 

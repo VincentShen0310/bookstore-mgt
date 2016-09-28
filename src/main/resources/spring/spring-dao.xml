@@ -42,13 +42,13 @@ http://mybatis.org/schema/mybatis-spring.xsd">
 		<!-- 配置mybatis全局配置文件 -->
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 扫描entity包，使用别名 -->
-		<property name="typeAliasesPackage" value="main.java.entity" />
+		<property name="typeAliasesPackage" value="entity" />
 		<!--扫描mapper下的xml文件 -->
 		<property name="mapperLocations" value="classpath:mapper/*.xml" />
 		
 		<property name="plugins">
 			<!-- 分页拦截器 --> 
-			<bean class="main.java.common.PageInterceptor"></bean>
+			<bean class="common.PageInterceptor"></bean>
 		</property>
 		
 	</bean>
@@ -58,7 +58,7 @@ http://mybatis.org/schema/mybatis-spring.xsd">
 		<!-- 注入sqlSessionFactory -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<!-- 需要扫描的DAO接口 -->
-		<property name="basePackage" value="main.java.dao" />
+		<property name="basePackage" value="dao" />
 	</bean>
 </beans>
 

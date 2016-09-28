@@ -1,13 +1,13 @@
-package main.java.service.impl;
+package service.impl;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.java.common.Page;
-import main.java.dao.AuthorDAO;
-import main.java.entity.Author;
-import main.java.service.AuthorService;
+import common.Page;
+import dao.AuthorDAO;
+import entity.Author;
+import service.AuthorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

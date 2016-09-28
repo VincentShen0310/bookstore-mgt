@@ -1,4 +1,4 @@
-package main.java.service.impl;
+package service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.java.common.Page;
-import main.java.dao.BookDAO;
-import main.java.entity.Book;
-import main.java.service.BookService;
+import common.Page;
+import dao.BookDAO;
+import entity.Book;
+import service.BookService;
 
 @Service
 public class BookServiceImpl implements BookService {

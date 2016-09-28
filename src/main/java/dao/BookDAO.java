@@ -1,11 +1,11 @@
-package main.java.dao;
+package dao;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import main.java.entity.Book;
+import entity.Book;
 
 public interface BookDAO {
 	//根据ID查询图书信息

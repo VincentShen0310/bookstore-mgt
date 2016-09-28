@@ -16,7 +16,7 @@ http://mybatis.org/schema/mybatis-spring
 http://mybatis.org/schema/mybatis-spring.xsd">
 
 	<!-- 扫描Service包下所有使用注解的类型 -->
-	<context:component-scan base-package="main.java.service" />
+	<context:component-scan base-package="service" />
 
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"

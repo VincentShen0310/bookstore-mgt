@@ -3,14 +3,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="main.java.dao.UserDAO">
+<mapper namespace="dao.UserDAO">
 
 	<resultMap type="User" id="UserResult">
 		<id column="b_id" jdbcType="INTEGER" property="id" />
 		<result column="b_name" jdbcType="VARCHAR" property="name" />
 		<result column="b_status" jdbcType="INTEGER" property="status" />
 		<result column="b_role_id" jdbcType="INTEGER" property="roleId" />
-		<collection property="role" resultMap="main.java.dao.RoleDAO.RoleResult"/>
+		<collection property="role" resultMap="dao.RoleDAO.RoleResult"/>
 	</resultMap>
 
 

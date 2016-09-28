@@ -1,9 +1,9 @@
-package main.java.web;
+package web;
 
 import java.util.List;
 
-import main.java.entity.Role;
-import main.java.service.RoleService;
+import entity.Role;
+import service.RoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

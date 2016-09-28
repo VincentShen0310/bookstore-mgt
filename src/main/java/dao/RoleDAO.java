@@ -1,8 +1,8 @@
-package main.java.dao;
+package dao;
 
 import java.util.List;
 
-import main.java.entity.Role;
+import entity.Role;
 
 import org.apache.ibatis.annotations.Param;
 

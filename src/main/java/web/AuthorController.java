@@ -1,4 +1,4 @@
-package main.java.web;
+package web;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import main.java.common.Page;
-import main.java.entity.Author;
-import main.java.service.AuthorService;
+import common.Page;
+import entity.Author;
+import service.AuthorService;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="main.java.dao.AuthorDAO">
+<mapper namespace="dao.AuthorDAO">
 
 	<resultMap type="Author" id="AuthorResult">
 		<id column="id" jdbcType="INTEGER" property="id" />

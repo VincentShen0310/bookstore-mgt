@@ -1,4 +1,4 @@
-package main.java.common;
+package common;
 
 /**
  * 分页对应的实体类

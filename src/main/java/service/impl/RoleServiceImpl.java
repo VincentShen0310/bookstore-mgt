@@ -1,13 +1,13 @@
-package main.java.service.impl;
+package service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.java.dao.RoleDAO;
-import main.java.entity.Role;
-import main.java.service.RoleService;
+import dao.RoleDAO;
+import entity.Role;
+import service.RoleService;
 
 @Service
 public class RoleServiceImpl implements RoleService{

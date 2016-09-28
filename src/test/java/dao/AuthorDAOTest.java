@@ -1,12 +1,12 @@
-package test.java.dao;
+package dao;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import main.java.common.Page;
-import main.java.dao.AuthorDAO;
-import main.java.entity.Author;
+import common.Page;
+import dao.AuthorDAO;
+import entity.Author;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
