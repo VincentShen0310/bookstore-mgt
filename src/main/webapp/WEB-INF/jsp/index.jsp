@@ -11,19 +11,21 @@
 <body>
     <div class="container">
 
-      <form class="form-signin" style="width:400px; margin:auto" method="post" action="${ctx}/book/list">
+      <form class="form-signin" style="width:400px; margin:auto" method="post" action="${ctx}/login">
         <h2 class="form-signin-heading">BookStore Management</h2>
             <div class="input-group">
       			<span class="input-group-addon" id="username">账号:</span>
-      			<input  type="text" class="form-control" name="username" placeholder="用户名" required autofocus>
+      			<input  type="text" class="form-control" name="name" value="${user.name}" placeholder="用户名" required autofocus>
     		</div>
 			</br>
             <div class="input-group">
       			<span class="input-group-addon" id="password">密码:</span>
-      			<input  type="password" class="form-control" name="password" placeholder="密码" required autofocus>
+      			<input  type="password" class="form-control" name="password" value="${user.password}" placeholder="密码" required autofocus>
     		</div>
 			</br>
         <button class="btn btn-primary btn-block" type="submit">登录</button>
+        </br>
+        <h4 style="color:red">${message}</h4>
       </form>
 
     </div>

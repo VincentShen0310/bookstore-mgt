@@ -21,7 +21,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#">Dashboard</a>
+            <a href="#">Welcome ${user.name}</a>
           </li>
           <li>
             <a href="#">Settings</a>
@@ -33,8 +33,10 @@
             <a href="#">Help</a>
           </li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <input type="text" class="form-control" placeholder="Search..."></form>
+        <form class="navbar-form navbar-right" action="${ctx}/logout">
+          <input type="text" class="form-control" placeholder="Search...">
+          <button type="submit" class="btn btn-primary">注销</button>
+         </form>
       </div>
     </div>
   </nav>

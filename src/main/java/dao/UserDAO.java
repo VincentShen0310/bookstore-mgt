@@ -10,6 +10,8 @@ public interface UserDAO {
 	
 	User queryUserByID(@Param("id") int id);
 	
+	User queryUserByName(@Param("name") String name);
+	
 	List<User> queryAllUsers();
 	
 	List<User> queryUsersByCondition(@Param("name") String name, @Param("status") int status,@Param("roleName") int roleName);

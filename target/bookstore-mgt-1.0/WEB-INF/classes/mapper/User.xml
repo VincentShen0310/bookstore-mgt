@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.UserDAO">
+
+	<resultMap type="User" id="UserResult">
+		<id column="b_id" jdbcType="INTEGER" property="id" />
+		<result column="b_name" jdbcType="VARCHAR" property="name" />
+		<result column="b_status" jdbcType="INTEGER" property="status" />
+		<result column="b_role_id" jdbcType="INTEGER" property="roleId" />
+		<collection property="role" resultMap="dao.RoleDAO.RoleResult"/>
+	</resultMap>
+
+
+	<select id="queryUserByID" resultType="User">
+		SELECT
+		id,name,password,status,role_id FROM user
+		where
+		id=#{id}
+	</select>
+
+	<select id="queryAllUsers" resultType="User" resultMap="UserResult">
+		SELECT
+		id,name,password,status,role_id FROM user
+	</select>
+	
+	<insert id="addOneUser">
+		INSERT ignore INTO book
+		(name,password,status,role_id)
+		VALUES
+		(#{name},#{password},#{status},#{roleId})
+	</insert>
+
+	<update id="updateOneUser">
+		UPDATE book SET
+		name = #{name,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		status = #{status,jdbcType=INTEGER},
+		role_id=#{authorId,jdbcType=INTEGER}
+		WHERE
+		id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="queryUsersByCondition" resultMap="UserResult">
+		SELECT
+		u.id u_id,u.name u_name,u.status u_status, u.role_id u_role_id
+		r.name,r.description,r.status
+		FROM user u
+		left join role r on u.role_id=r.id
+		<where>
+		<if test="name != null and name !='' ">
+			u.name like "%"#{name}"%"
+		</if>
+		<if test="status != null and status !='' ">
+			AND u.status = #{status}
+		</if>
+		<if test="roleName != null and roleName !='' ">
+			AND r.name like "%"#{roleName}"%"
+		</if>
+		</where>
+	</select>
+	
+</mapper>
